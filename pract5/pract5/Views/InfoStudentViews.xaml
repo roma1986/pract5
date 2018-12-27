@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="pract5.Views.InfoStudentViews"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label
+                    FontSize="Medium"
+                    Text="Добавлення нового запису" />
+                <StackLayout
+                    Orientation="Horizontal">
+                    <Entry
+                        FontSize="Small"
+                        Placeholder="Прізвище" 
+                        Text="{Binding Prizv}" 
+                        WidthRequest="120"/>
+                    <Entry
+                        FontSize="Small"
+                        Placeholder="Ім`я" 
+                        Text="{Binding Name}"
+                        WidthRequest="120"
+                        />
+                </StackLayout>
+                <StackLayout
+                    HorizontalOptions="Fill"
+                    Orientation="Horizontal">
+                    <Entry
+                         FontSize="Small"
+                        Placeholder="дд-мм-рррр" 
+                        Text="{Binding Birsday}"/>                      
+                    <Entry
+                    FontSize="Small"
+                        Placeholder="Номер телефону "
+                        Keyboard="Numeric"
+                        Text="{Binding Phone}"/>
+                </StackLayout>
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal">
+                    <Button
+                        Text="Добавити" 
+                        Command="{Binding CreateStudentListCommand}"/>
+                    <Button
+                        Text="Видалити" 
+                        Command="{Binding DeleteStudentListCommand}"/>
+                </StackLayout>
+
+                <StackLayout>
+                    <Label
+                        FontSize="Small"
+                        HorizontalOptions="Center"
+                        Text="Дані про студентів" />
+                    <ListView
+                        x:Name="StydentList"
+                        HasUnevenRows="True"
+                        ItemsSource="{Binding Students}"
+                        SelectedItem="{Binding SelectedStudent}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.View>
+                                        <StackLayout>
+                                            <Label
+                                                FontSize="Medium"
+                                                Text="{Binding StudentPIB}"
+                                                TextColor="Red" />
+                                            <Label
+                                                FontSize="Medium"
+                                                Text="{Binding Birsday}"
+                                                TextColor="Green" />
+                                            <Label
+                                                FontSize="Medium"
+                                                Text="{Binding Phone}"
+                                                TextColor="Green" />
+                                        </StackLayout>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>
